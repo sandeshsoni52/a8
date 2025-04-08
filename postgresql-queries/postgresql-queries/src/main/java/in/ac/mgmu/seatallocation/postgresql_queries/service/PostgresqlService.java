@@ -15,8 +15,12 @@ public class PostgresqlService {
     public void method1(String sourceTable, String targetTable) {
         String dropQuery = "DROP TABLE IF EXISTS " + targetTable;
         String createQuery = "CREATE TABLE " + targetTable + " AS TABLE " + sourceTable;
+        String q0 = "CREATE TABLE merit_listp12 ( Srno INTEGER,Rollno VARCHAR(20), cname VARCHAR(100), Category VARCHAR(20),prefer1 VARCHAR(20),prefer2 VARCHAR(20))";
+        entityManager.createNativeQuery(q0).executeUpdate();
 
         entityManager.createNativeQuery(dropQuery).executeUpdate();
         entityManager.createNativeQuery(createQuery).executeUpdate();
+
+
     }
 }
