@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>duplicatetable</artifactId>
+	<artifactId>postgresql-queries</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>duplicatetable</name>
+	<name>Postgresql Queries</name>
 	<description>postgresql</description>
 	<url/>
 	<licenses>
