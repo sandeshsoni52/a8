@@ -16,8 +16,11 @@ public class DuplicateTableService {
     public void duplicateTable(String sourceTable, String targetTable) {
         String dropQuery = "DROP TABLE IF EXISTS " + targetTable;
         String createQuery = "CREATE TABLE " + targetTable + " AS TABLE " + sourceTable;
+        String q1 = "CREATE TABLE merit_listp12 ( Srno INTEGER,Rollno VARCHAR(20), cname VARCHAR(100), Category VARCHAR(20),prefer1 VARCHAR(20),prefer2 VARCHAR(20))";
 
         entityManager.createNativeQuery(dropQuery).executeUpdate();
         entityManager.createNativeQuery(createQuery).executeUpdate();
+        entityManager.createNativeQuery(q1).executeUpdate();
+
     }
 }
