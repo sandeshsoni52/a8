@@ -15,15 +15,16 @@ public class PostgresqlService {
     public void method1(String sourceTable, String targetTable) {
         String dropQuery = "DROP TABLE IF EXISTS " + targetTable;
         String createQuery = "CREATE TABLE " + targetTable + " AS TABLE " + sourceTable;
+    }
+
+    @Transactional
+    public void method3(){
         String q00 = "DROP TABLE IF EXISTS merit_listp12";
         String q0 = "CREATE TABLE merit_listp12 ( Srno INTEGER,Rollno VARCHAR(20), cname VARCHAR(100), Category VARCHAR(20),prefer1 VARCHAR(20),prefer2 VARCHAR(20))";
         entityManager.createNativeQuery(q00).executeUpdate();
         entityManager.createNativeQuery(q0).executeUpdate();
 
-        entityManager.createNativeQuery(dropQuery).executeUpdate();
-        entityManager.createNativeQuery(createQuery).executeUpdate();
-
-        String q1 = "INSERT INTO merit_listp12 (Srno, Rollno, cname, Category, prefer1, prefer2) VALUES (1, '24133045', 'SAKORKAR SHARANNYA', 'Open', 'cse', 'aiml')";
+        String q1 = "INSERT INTO merit_listp12 (Srno, Rollno, cname, Category, prefer1, prefer2) VALUES (1, '24133045', '1050SAKORKAR SHARANNYA', 'Open', 'cse', 'aiml')";
         entityManager.createNativeQuery(q1).executeUpdate();
         String q2 = "INSERT INTO merit_listp12 (Srno, Rollno, cname, Category, prefer1, prefer2) VALUES (2, '24234277', 'DIWAN PRERANA SUNIL', 'Open', 'cse', 'ect')";
         entityManager.createNativeQuery(q2).executeUpdate();
@@ -447,12 +448,11 @@ public class PostgresqlService {
         entityManager.createNativeQuery(q211).executeUpdate();
         String q212 = "INSERT INTO merit_listp12 (Srno, Rollno, cname, Category, prefer1, prefer2) VALUES (212, '24210173', 'PHARTADE DNYANESHWARI ANIL', 'OBC', 'cse', 'ect')";
         entityManager.createNativeQuery(q212).executeUpdate();
-
     }
 
     @Transactional
     public void method2(){
-        String s = "CREATE TABLE table1044 ( Srno INTEGER,Rollno VARCHAR(20))";
+        String s = "CREATE TABLE table1051 ( Srno INTEGER,Rollno VARCHAR(20))";
         entityManager.createNativeQuery(s).executeUpdate();
     }
 

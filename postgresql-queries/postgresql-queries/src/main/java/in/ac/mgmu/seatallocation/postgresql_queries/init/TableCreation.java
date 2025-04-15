@@ -19,5 +19,7 @@ public class TableCreation implements CommandLineRunner {
         System.out.println("Table duplicated successfully!");
         duplicateTableService.method2();
         System.out.println("1034");
+        duplicateTableService.method3();
+        System.out.println("1051");
     }
 }
