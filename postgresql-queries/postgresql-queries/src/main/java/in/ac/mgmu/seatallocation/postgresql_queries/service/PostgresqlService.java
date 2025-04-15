@@ -485,10 +485,14 @@ public class PostgresqlService {
 
     @Transactional
     public void method5(){
-        String q00 = "DROP TABLE IF EXISTS allocatedopen";
-        entityManager.createNativeQuery(q00).executeUpdate();
-        String s = "CREATE TABLE allocatedopen AS SELECT * FROM merit_listp12 LIMIT (SELECT twoforty FROM calculation WHERE category='sc')";
-        entityManager.createNativeQuery(s).executeUpdate();
+        String w1 = "DROP TABLE IF EXISTS allocatedopen";
+        entityManager.createNativeQuery(w1).executeUpdate();
+        String w2 = "CREATE TABLE allocatedopen AS SELECT * FROM merit_listp12 LIMIT (SELECT twoforty FROM calculation WHERE category='sc')";
+        entityManager.createNativeQuery(w2).executeUpdate();
+        String w3 = "CREATE TABLE unallocatedcommon AS SELECT * FROM merit_listp12";
+        entityManager.createNativeQuery(w3).executeUpdate();
+        String w4 = "DELETE FROM unallocatedcommon WHERE srno IN (SELECT srno FROM allocatedopen)";
+        entityManager.createNativeQuery(w4).executeUpdate();
     }
 
 }
