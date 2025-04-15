@@ -513,14 +513,29 @@ public class PostgresqlService {
         //CSE_only OPEN , unallocatedcommonlist
         String w1 = "DROP TABLE IF EXISTS cseallocatedopen";
         entityManager.createNativeQuery(w1).executeUpdate();
-        String w2 = "CREATE TABLE cseallocatedopen AS SELECT * FROM i1meritlist LIMIT (SELECT twoforty FROM calculation WHERE category='open')";
+        String w2 = "CREATE TABLE cseallocatedopen AS SELECT * FROM csep1meritlist LIMIT (SELECT twoforty FROM calculation WHERE category='open')";
         entityManager.createNativeQuery(w2).executeUpdate();
         String w3a = "DROP TABLE IF EXISTS cseunallocatedcommon";
         entityManager.createNativeQuery(w3a).executeUpdate();
-        String w3 = "CREATE TABLE cseunallocatedcommon AS SELECT * FROM i1meritlist";
+        String w3 = "CREATE TABLE cseunallocatedcommon AS SELECT * FROM csep1meritlist";
         entityManager.createNativeQuery(w3).executeUpdate();
         String w4 = "DELETE FROM cseunallocatedcommon WHERE srno IN (SELECT srno FROM cseallocatedopen)";
         entityManager.createNativeQuery(w4).executeUpdate();
+    }
+
+    @Transactional
+    public void allocated_mech_r1i1_open(){
+        //CSE_only OPEN , unallocatedcommonlist
+        String w1 = "DROP TABLE IF EXISTS mechallocatedopen";
+        entityManager.createNativeQuery(w1).executeUpdate();
+        String w2 = "CREATE TABLE mechallocatedopen AS SELECT * FROM mechp1meritlist LIMIT (SELECT thirty FROM calculation WHERE category='open')";
+        entityManager.createNativeQuery(w2).executeUpdate();
+        String w3 = "DROP TABLE IF EXISTS mechunallocatedcommon";
+        entityManager.createNativeQuery(w3).executeUpdate();
+        String w4 = "CREATE TABLE mechunallocatedcommon AS SELECT * FROM mechp1meritlist";
+        entityManager.createNativeQuery(w4).executeUpdate();
+        String w5 = "DELETE FROM mechunallocatedcommon WHERE srno IN (SELECT srno FROM mechallocatedopen)";
+        entityManager.createNativeQuery(w5).executeUpdate();
     }
 
     @Transactional
