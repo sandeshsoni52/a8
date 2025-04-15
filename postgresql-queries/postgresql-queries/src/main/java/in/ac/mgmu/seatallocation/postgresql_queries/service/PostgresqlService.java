@@ -547,6 +547,42 @@ public class PostgresqlService {
         entityManager.createNativeQuery(e3).executeUpdate();
         String e4 = "DELETE FROM cseallocatedSC WHERE srno NOT IN (SELECT srno FROM (SELECT srno FROM cseallocatedSC ORDER BY srno LIMIT (SELECT twoforty FROM calculation WHERE category='sc')) )";
         entityManager.createNativeQuery(e4).executeUpdate();
+        //CSE_only ST
+        String e5 = "DROP TABLE IF EXISTS cseallocatedST";
+        entityManager.createNativeQuery(e5).executeUpdate();
+        String e6 = "CREATE TABLE cseallocatedST AS SELECT * FROM cseunallocatedcommon";
+        entityManager.createNativeQuery(e6).executeUpdate();
+        String e7 = "DELETE FROM cseallocatedST WHERE category <> 'ST'";
+        entityManager.createNativeQuery(e7).executeUpdate();
+        String e8 = "DELETE FROM cseallocatedST WHERE srno NOT IN (SELECT srno FROM (SELECT srno FROM cseallocatedST ORDER BY srno LIMIT (SELECT twoforty FROM calculation WHERE category='st')) )";
+        entityManager.createNativeQuery(e8).executeUpdate();
+        //CSE_only NT-A
+        String e9 = "DROP TABLE IF EXISTS cseallocatedNTC";
+        entityManager.createNativeQuery(e9).executeUpdate();
+        String e10 = "CREATE TABLE cseallocatedNTC AS SELECT * FROM cseunallocatedcommon";
+        entityManager.createNativeQuery(e10).executeUpdate();
+        String e11 = "DELETE FROM cseallocatedNTC WHERE category <> 'NTC'";
+        entityManager.createNativeQuery(e11).executeUpdate();
+        String e12 = "DELETE FROM cseallocatedNTC WHERE srno NOT IN (SELECT srno FROM (SELECT srno FROM cseallocatedNTC ORDER BY srno LIMIT (SELECT twoforty FROM calculation WHERE category='NTC')) )";
+        entityManager.createNativeQuery(e12).executeUpdate();
+        //CSE_only OBC
+        String e13 = "DROP TABLE IF EXISTS cseallocatedOBC";
+        entityManager.createNativeQuery(e13).executeUpdate();
+        String e14 = "CREATE TABLE cseallocatedOBC AS SELECT * FROM cseunallocatedcommon";
+        entityManager.createNativeQuery(e14).executeUpdate();
+        String e15 = "DELETE FROM cseallocatedOBC WHERE category <> 'OBC'";
+        entityManager.createNativeQuery(e15).executeUpdate();
+        String e16 = "DELETE FROM cseallocatedOBC WHERE srno NOT IN (SELECT srno FROM (SELECT srno FROM cseallocatedOBC ORDER BY srno LIMIT (SELECT twoforty FROM calculation WHERE category='OBC')) )";
+        entityManager.createNativeQuery(e16).executeUpdate();
+        //CSE_only SEBC
+        String e17 = "DROP TABLE IF EXISTS cseallocatedSEBC";
+        entityManager.createNativeQuery(e17).executeUpdate();
+        String e18 = "CREATE TABLE cseallocatedSEBC AS SELECT * FROM cseunallocatedcommon";
+        entityManager.createNativeQuery(e18).executeUpdate();
+        String e19 = "DELETE FROM cseallocatedSEBC WHERE category <> 'SEBC'";
+        entityManager.createNativeQuery(e19).executeUpdate();
+        String e20 = "DELETE FROM cseallocatedSEBC WHERE srno NOT IN (SELECT srno FROM (SELECT srno FROM cseallocatedSEBC ORDER BY srno LIMIT (SELECT twoforty FROM calculation WHERE category='SEBC')) )";
+        entityManager.createNativeQuery(e20).executeUpdate();
 
     }
 
