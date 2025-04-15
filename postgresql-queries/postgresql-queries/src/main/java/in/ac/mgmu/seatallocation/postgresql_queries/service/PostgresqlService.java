@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class PostgresqlService {
 
+    String ect = "sixty";
+
     @PersistenceContext
     private EntityManager entityManager;
 
@@ -451,8 +453,21 @@ public class PostgresqlService {
     }
 
     @Transactional
-    public void method2(){
-        String s = "CREATE TABLE table1051 ( Srno INTEGER,Rollno VARCHAR(20))";
+    public void method5(){
+        String q00 = "DROP TABLE IF EXISTS calculation";
+        String q0 = "CREATE TABLE calculation ( category VARCHAR(10), thirty INT, sixty INT, twoforty INT )";
+        entityManager.createNativeQuery(q00).executeUpdate();
+        entityManager.createNativeQuery(q0).executeUpdate();
+
+        String c1 = "INSERT INTO calculation (category, thirty, sixty, twoforty) VALUES ('sc', 1, 3, 12)";
+        entityManager.createNativeQuery(c1).executeUpdate();
+    }
+
+    @Transactional
+    public void method4(){
+        String q00 = "DROP TABLE IF EXISTS allocatedopen";
+        entityManager.createNativeQuery(q00).executeUpdate();
+        String s = "CREATE TABLE allocatedopen AS SELECT * FROM merit_listp12 LIMIT (SELECT twoforty FROM calculation WHERE category='sc')";
         entityManager.createNativeQuery(s).executeUpdate();
     }
 
