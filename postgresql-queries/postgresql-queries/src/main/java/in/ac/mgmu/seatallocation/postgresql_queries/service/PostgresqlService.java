@@ -483,6 +483,7 @@ public class PostgresqlService {
         entityManager.createNativeQuery(c11).executeUpdate();
     }
 
+    //empty
     @Transactional
     public void method5(){
 //        // OPEN , unallocatedcommonlist
@@ -587,4 +588,17 @@ public class PostgresqlService {
 
     }
 
+    @Transactional
+    public void r1i2prepare(){
+        String t1 = "DROP TABLE IF EXISTS cseallocated_r1i1";
+        entityManager.createNativeQuery(t1).executeUpdate();
+        String t2 = "CREATE TABLE cseallocated_r1i1 AS SELECT Srno, rollno, cname, category FROM cseallocatedntc UNION ALL SELECT Srno, rollno, cname, category FROM cseallocatedst UNION ALL SELECT Srno, rollno, cname, category FROM cseallocatedsc UNION ALL SELECT Srno, rollno, cname, category FROM cseallocatedopen UNION ALL SELECT Srno, rollno, cname, category FROM cseallocatedobc";
+        entityManager.createNativeQuery(t2).executeUpdate();
+        String t3 = "DROP TABLE IF EXISTS cseunallocated_r1i1";
+        entityManager.createNativeQuery(t3).executeUpdate();
+        String t4 = "CREATE TABLE cseunallocated_r1i1 AS SELECT * FROM csep1meritlist;";
+        entityManager.createNativeQuery(t4).executeUpdate();
+        String t5 = " DELETE FROM cseunallocated_r1i1 WHERE srno IN (SELECT srno FROM cseallocated_r1i1)";
+        entityManager.createNativeQuery(t5).executeUpdate();
+    }
 }
