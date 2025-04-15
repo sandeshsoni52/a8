@@ -20,7 +20,7 @@ public class PostgresqlService {
     }
 
     @Transactional
-    public void method3(){
+    public void created212candidiates(){
         String q00 = "DROP TABLE IF EXISTS merit_listp12";
         String q0 = "CREATE TABLE merit_listp12 ( Srno INTEGER,Rollno VARCHAR(20), cname VARCHAR(100), Category VARCHAR(20),prefer1 VARCHAR(20),prefer2 VARCHAR(20))";
         entityManager.createNativeQuery(q00).executeUpdate();
@@ -453,7 +453,7 @@ public class PostgresqlService {
     }
 
     @Transactional
-    public void method4(){
+    public void create_calculation_table(){
         String q00 = "DROP TABLE IF EXISTS calculation";
         String q0 = "CREATE TABLE calculation ( category VARCHAR(10), thirty INT, sixty INT, twoforty INT )";
         entityManager.createNativeQuery(q00).executeUpdate();
@@ -483,22 +483,6 @@ public class PostgresqlService {
         entityManager.createNativeQuery(c11).executeUpdate();
     }
 
-    //empty
-    @Transactional
-    public void method5(){
-//        // OPEN , unallocatedcommonlist
-//        String w1 = "DROP TABLE IF EXISTS allocatedopen";
-//        entityManager.createNativeQuery(w1).executeUpdate();
-//        String w2 = "CREATE TABLE allocatedopen AS SELECT * FROM merit_listp12 LIMIT (SELECT twoforty FROM calculation WHERE category='open')";
-//        entityManager.createNativeQuery(w2).executeUpdate();
-//        String w3a = "DROP TABLE IF EXISTS unallocatedcommon";
-//        entityManager.createNativeQuery(w3a).executeUpdate();
-//        String w3 = "CREATE TABLE unallocatedcommon AS SELECT * FROM merit_listp12";
-//        entityManager.createNativeQuery(w3).executeUpdate();
-//        String w4 = "DELETE FROM unallocatedcommon WHERE srno IN (SELECT srno FROM allocatedopen)";
-//        entityManager.createNativeQuery(w4).executeUpdate();
-    }
-
     @Transactional
     public void duplicate_meritlist(){
         String m1 = "DROP TABLE IF EXISTS i1meritlist";
@@ -507,6 +491,7 @@ public class PostgresqlService {
         entityManager.createNativeQuery(m2).executeUpdate();
     }
 
+    // more dept needed
     @Transactional
     public void separatebyp1(){
         String r1 = "DROP TABLE IF EXISTS csep1meritlist";
