@@ -485,14 +485,69 @@ public class PostgresqlService {
 
     @Transactional
     public void method5(){
-        String w1 = "DROP TABLE IF EXISTS allocatedopen";
+//        // OPEN , unallocatedcommonlist
+//        String w1 = "DROP TABLE IF EXISTS allocatedopen";
+//        entityManager.createNativeQuery(w1).executeUpdate();
+//        String w2 = "CREATE TABLE allocatedopen AS SELECT * FROM merit_listp12 LIMIT (SELECT twoforty FROM calculation WHERE category='open')";
+//        entityManager.createNativeQuery(w2).executeUpdate();
+//        String w3a = "DROP TABLE IF EXISTS unallocatedcommon";
+//        entityManager.createNativeQuery(w3a).executeUpdate();
+//        String w3 = "CREATE TABLE unallocatedcommon AS SELECT * FROM merit_listp12";
+//        entityManager.createNativeQuery(w3).executeUpdate();
+//        String w4 = "DELETE FROM unallocatedcommon WHERE srno IN (SELECT srno FROM allocatedopen)";
+//        entityManager.createNativeQuery(w4).executeUpdate();
+    }
+
+    @Transactional
+    public void duplicate_meritlist(){
+        String m1 = "DROP TABLE IF EXISTS i1meritlist";
+        entityManager.createNativeQuery(m1).executeUpdate();
+        String m2 = "CREATE TABLE i1meritlist AS SELECT * FROM merit_listp12";
+        entityManager.createNativeQuery(m2).executeUpdate();
+    }
+
+    @Transactional
+    public void separatebyp1(){
+        String r1 = "DROP TABLE IF EXISTS csep1meritlist";
+        entityManager.createNativeQuery(r1).executeUpdate();
+        String r2 = "CREATE TABLE csep1meritlist AS SELECT * FROM i1meritlist";
+        entityManager.createNativeQuery(r2).executeUpdate();
+        String r3 = "DELETE FROM csep1meritlist WHERE prefer1 <> 'cse'";
+        entityManager.createNativeQuery(r3).executeUpdate();
+        String r4 = "DROP TABLE IF EXISTS mechp1meritlist";
+        entityManager.createNativeQuery(r4).executeUpdate();
+        String r5 = "CREATE TABLE mechp1meritlist AS SELECT * FROM i1meritlist";
+        entityManager.createNativeQuery(r5).executeUpdate();
+        String r6 = "DELETE FROM mechp1meritlist WHERE prefer1 <> 'mech'";
+        entityManager.createNativeQuery(r6).executeUpdate();
+    }
+
+    @Transactional
+    public void allocated_cse_r1i1_open(){
+        //CSE_only OPEN , unallocatedcommonlist
+        String w1 = "DROP TABLE IF EXISTS cseallocatedopen";
         entityManager.createNativeQuery(w1).executeUpdate();
-        String w2 = "CREATE TABLE allocatedopen AS SELECT * FROM merit_listp12 LIMIT (SELECT twoforty FROM calculation WHERE category='sc')";
+        String w2 = "CREATE TABLE cseallocatedopen AS SELECT * FROM i1meritlist LIMIT (SELECT twoforty FROM calculation WHERE category='open')";
         entityManager.createNativeQuery(w2).executeUpdate();
-        String w3 = "CREATE TABLE unallocatedcommon AS SELECT * FROM merit_listp12";
+        String w3a = "DROP TABLE IF EXISTS cseunallocatedcommon";
+        entityManager.createNativeQuery(w3a).executeUpdate();
+        String w3 = "CREATE TABLE cseunallocatedcommon AS SELECT * FROM i1meritlist";
         entityManager.createNativeQuery(w3).executeUpdate();
-        String w4 = "DELETE FROM unallocatedcommon WHERE srno IN (SELECT srno FROM allocatedopen)";
+        String w4 = "DELETE FROM cseunallocatedcommon WHERE srno IN (SELECT srno FROM cseallocatedopen)";
         entityManager.createNativeQuery(w4).executeUpdate();
+    }
+    @Transactional
+    public void allocated_cse_r1i1_scstntabcdobc(){
+        //CSE_only SC
+        String e1 = "DROP TABLE IF EXISTS cseallocatedSC";
+        entityManager.createNativeQuery(e1).executeUpdate();
+        String e2 = "CREATE TABLE cseallocatedSC AS SELECT * FROM cseunallocatedcommon";
+        entityManager.createNativeQuery(e2).executeUpdate();
+        String e3 = "DELETE FROM cseallocatedSC WHERE category <> 'SC'";
+        entityManager.createNativeQuery(e3).executeUpdate();
+        String e4 = "DELETE FROM cseallocatedSC WHERE srno NOT IN (SELECT srno FROM (SELECT srno FROM cseallocatedSC ORDER BY srno LIMIT (SELECT twoforty FROM calculation WHERE category='sc')) )";
+        entityManager.createNativeQuery(e4).executeUpdate();
+
     }
 
 }

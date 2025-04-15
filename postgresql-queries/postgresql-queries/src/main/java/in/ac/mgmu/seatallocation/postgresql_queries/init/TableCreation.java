@@ -23,5 +23,12 @@ public class TableCreation implements CommandLineRunner {
         System.out.println("1056");
         duplicateTableService.method5();
         System.out.println("1114");
+        duplicateTableService.duplicate_meritlist();
+        duplicateTableService.separatebyp1();
+        System.out.println("1504");
+        duplicateTableService.allocated_cse_r1i1_open();
+        duplicateTableService.allocated_cse_r1i1_scstntabcdobc();
+        System.out.println("1515");
+
     }
 }
