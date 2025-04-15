@@ -453,7 +453,7 @@ public class PostgresqlService {
     }
 
     @Transactional
-    public void method5(){
+    public void method4(){
         String q00 = "DROP TABLE IF EXISTS calculation";
         String q0 = "CREATE TABLE calculation ( category VARCHAR(10), thirty INT, sixty INT, twoforty INT )";
         entityManager.createNativeQuery(q00).executeUpdate();
@@ -461,10 +461,30 @@ public class PostgresqlService {
 
         String c1 = "INSERT INTO calculation (category, thirty, sixty, twoforty) VALUES ('sc', 1, 3, 12)";
         entityManager.createNativeQuery(c1).executeUpdate();
+        String c2 = "INSERT INTO calculation (category, thirty, sixty, twoforty) VALUES ('st', 1, 1, 6)";
+        entityManager.createNativeQuery(c2).executeUpdate();
+        String c3 = "INSERT INTO calculation (category, thirty, sixty, twoforty) VALUES ('nta', 1, 1, 2)";
+        entityManager.createNativeQuery(c3).executeUpdate();
+        String c4 = "INSERT INTO calculation (category, thirty, sixty, twoforty) VALUES ('ntb', 1, 1, 2)";
+        entityManager.createNativeQuery(c4).executeUpdate();
+        String c5 = "INSERT INTO calculation (category, thirty, sixty, twoforty) VALUES ('ntc', 1, 1, 3)";
+        entityManager.createNativeQuery(c5).executeUpdate();
+        String c6 = "INSERT INTO calculation (category, thirty, sixty, twoforty) VALUES ('ntd', 1, 1, 1)";
+        entityManager.createNativeQuery(c6).executeUpdate();
+        String c7 = "INSERT INTO calculation (category, thirty, sixty, twoforty) VALUES ('obc', 2, 4, 18)";
+        entityManager.createNativeQuery(c7).executeUpdate();
+        String c8 = "INSERT INTO calculation (category, thirty, sixty, twoforty) VALUES ('sebc', 1, 2, 9)";
+        entityManager.createNativeQuery(c8).executeUpdate();
+        String c9 = "INSERT INTO calculation (category, thirty, sixty, twoforty) VALUES ('open', 3, 10, 43)";
+        entityManager.createNativeQuery(c9).executeUpdate();
+        String c10 = "INSERT INTO calculation (category, thirty, sixty, twoforty) VALUES ('total', 12, 24, 96)";
+        entityManager.createNativeQuery(c10).executeUpdate();
+        String c11 = "INSERT INTO calculation (category, thirty, sixty, twoforty) VALUES ('deptseats', 30, 60, 240)";
+        entityManager.createNativeQuery(c11).executeUpdate();
     }
 
     @Transactional
-    public void method4(){
+    public void method5(){
         String q00 = "DROP TABLE IF EXISTS allocatedopen";
         entityManager.createNativeQuery(q00).executeUpdate();
         String s = "CREATE TABLE allocatedopen AS SELECT * FROM merit_listp12 LIMIT (SELECT twoforty FROM calculation WHERE category='sc')";
