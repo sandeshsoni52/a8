@@ -449,4 +449,11 @@ public class PostgresqlService {
         entityManager.createNativeQuery(q212).executeUpdate();
 
     }
+
+    @Transactional
+    public void method2(){
+        String s = "CREATE TABLE table1044 ( Srno INTEGER,Rollno VARCHAR(20))";
+        entityManager.createNativeQuery(s).executeUpdate();
+    }
+
 }
