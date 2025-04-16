@@ -597,7 +597,7 @@ public class PostgresqlService {
         entityManager.createNativeQuery(e2).executeUpdate();
         String e3 = "DELETE FROM mechallocatedSC WHERE category <> 'SC'";
         entityManager.createNativeQuery(e3).executeUpdate();
-        String e4 = "DELETE FROM mechallocatedSC WHERE srno NOT IN (SELECT srno FROM (SELECT srno FROM mechallocatedSC ORDER BY srno LIMIT (SELECT twoforty FROM calculation WHERE category='sc')) )";
+        String e4 = "DELETE FROM mechallocatedSC WHERE srno NOT IN (SELECT srno FROM (SELECT srno FROM mechallocatedSC ORDER BY srno LIMIT (SELECT thirty FROM calculation WHERE category='sc')) )";
         entityManager.createNativeQuery(e4).executeUpdate();
         //CSE_only ST
         String e5 = "DROP TABLE IF EXISTS mechallocatedST";
@@ -606,7 +606,7 @@ public class PostgresqlService {
         entityManager.createNativeQuery(e6).executeUpdate();
         String e7 = "DELETE FROM mechallocatedST WHERE category <> 'ST'";
         entityManager.createNativeQuery(e7).executeUpdate();
-        String e8 = "DELETE FROM mechallocatedST WHERE srno NOT IN (SELECT srno FROM (SELECT srno FROM mechallocatedST ORDER BY srno LIMIT (SELECT twoforty FROM calculation WHERE category='st')) )";
+        String e8 = "DELETE FROM mechallocatedST WHERE srno NOT IN (SELECT srno FROM (SELECT srno FROM mechallocatedST ORDER BY srno LIMIT (SELECT thirty FROM calculation WHERE category='st')) )";
         entityManager.createNativeQuery(e8).executeUpdate();
         //CSE_only NT-A
         String e9 = "DROP TABLE IF EXISTS mechallocatedNTC";
@@ -615,7 +615,7 @@ public class PostgresqlService {
         entityManager.createNativeQuery(e10).executeUpdate();
         String e11 = "DELETE FROM mechallocatedNTC WHERE category <> 'NTC'";
         entityManager.createNativeQuery(e11).executeUpdate();
-        String e12 = "DELETE FROM mechallocatedNTC WHERE srno NOT IN (SELECT srno FROM (SELECT srno FROM mechallocatedNTC ORDER BY srno LIMIT (SELECT twoforty FROM calculation WHERE category='ntc')) )";
+        String e12 = "DELETE FROM mechallocatedNTC WHERE srno NOT IN (SELECT srno FROM (SELECT srno FROM mechallocatedNTC ORDER BY srno LIMIT (SELECT thirty FROM calculation WHERE category='ntc')) )";
         entityManager.createNativeQuery(e12).executeUpdate();
         //CSE_only OBC
         String e13 = "DROP TABLE IF EXISTS mechallocatedOBC";
@@ -624,7 +624,7 @@ public class PostgresqlService {
         entityManager.createNativeQuery(e14).executeUpdate();
         String e15 = "DELETE FROM mechallocatedOBC WHERE category <> 'OBC'";
         entityManager.createNativeQuery(e15).executeUpdate();
-        String e16 = "DELETE FROM mechallocatedOBC WHERE srno NOT IN (SELECT srno FROM (SELECT srno FROM mechallocatedOBC ORDER BY srno LIMIT (SELECT twoforty FROM calculation WHERE category='obc')) )";
+        String e16 = "DELETE FROM mechallocatedOBC WHERE srno NOT IN (SELECT srno FROM (SELECT srno FROM mechallocatedOBC ORDER BY srno LIMIT (SELECT thirty FROM calculation WHERE category='obc')) )";
         entityManager.createNativeQuery(e16).executeUpdate();
         //CSE_only SEBC
         String e17 = "DROP TABLE IF EXISTS mechallocatedSEBC";
@@ -633,7 +633,7 @@ public class PostgresqlService {
         entityManager.createNativeQuery(e18).executeUpdate();
         String e19 = "DELETE FROM mechallocatedSEBC WHERE category <> 'SEBC'";
         entityManager.createNativeQuery(e19).executeUpdate();
-        String e20 = "DELETE FROM mechallocatedSEBC WHERE srno NOT IN (SELECT srno FROM (SELECT srno FROM mechallocatedSEBC ORDER BY srno LIMIT (SELECT twoforty FROM calculation WHERE category='sebc')) )";
+        String e20 = "DELETE FROM mechallocatedSEBC WHERE srno NOT IN (SELECT srno FROM (SELECT srno FROM mechallocatedSEBC ORDER BY srno LIMIT (SELECT thirty FROM calculation WHERE category='sebc')) )";
         entityManager.createNativeQuery(e20).executeUpdate();
 
     }
