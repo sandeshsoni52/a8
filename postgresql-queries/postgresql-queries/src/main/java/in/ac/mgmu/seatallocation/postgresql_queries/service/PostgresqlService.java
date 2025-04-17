@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class PostgresqlService {
 
-    String ect = "sixty";
+    String cseseats = "twoforty";
+    String mechseats = "thirty";
+    String ectseats = "sixty";
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -513,7 +515,7 @@ public class PostgresqlService {
         //CSE_only OPEN , unallocatedcommonlist
         String w1 = "DROP TABLE IF EXISTS cseallocatedopen";
         entityManager.createNativeQuery(w1).executeUpdate();
-        String w2 = "CREATE TABLE cseallocatedopen AS SELECT * FROM csep1meritlist LIMIT (SELECT twoforty FROM calculation WHERE category='open')";
+        String w2 = "CREATE TABLE cseallocatedopen AS SELECT * FROM csep1meritlist LIMIT (SELECT "+cseseats+" FROM calculation WHERE category='open')";
         entityManager.createNativeQuery(w2).executeUpdate();
         String w3a = "DROP TABLE IF EXISTS cseunallocatedcommon";
         entityManager.createNativeQuery(w3a).executeUpdate();
@@ -547,7 +549,7 @@ public class PostgresqlService {
         entityManager.createNativeQuery(e2).executeUpdate();
         String e3 = "DELETE FROM cseallocatedSC WHERE category <> 'SC'";
         entityManager.createNativeQuery(e3).executeUpdate();
-        String e4 = "DELETE FROM cseallocatedSC WHERE srno NOT IN (SELECT srno FROM (SELECT srno FROM cseallocatedSC ORDER BY srno LIMIT (SELECT twoforty FROM calculation WHERE category='sc')) )";
+        String e4 = "DELETE FROM cseallocatedSC WHERE srno NOT IN (SELECT srno FROM (SELECT srno FROM cseallocatedSC ORDER BY srno LIMIT (SELECT "+cseseats+" FROM calculation WHERE category='sc')) )";
         entityManager.createNativeQuery(e4).executeUpdate();
         //CSE_only ST
         String e5 = "DROP TABLE IF EXISTS cseallocatedST";
@@ -556,7 +558,7 @@ public class PostgresqlService {
         entityManager.createNativeQuery(e6).executeUpdate();
         String e7 = "DELETE FROM cseallocatedST WHERE category <> 'ST'";
         entityManager.createNativeQuery(e7).executeUpdate();
-        String e8 = "DELETE FROM cseallocatedST WHERE srno NOT IN (SELECT srno FROM (SELECT srno FROM cseallocatedST ORDER BY srno LIMIT (SELECT twoforty FROM calculation WHERE category='st')) )";
+        String e8 = "DELETE FROM cseallocatedST WHERE srno NOT IN (SELECT srno FROM (SELECT srno FROM cseallocatedST ORDER BY srno LIMIT (SELECT "+cseseats+" FROM calculation WHERE category='st')) )";
         entityManager.createNativeQuery(e8).executeUpdate();
         //CSE_only NT-A
         String e9 = "DROP TABLE IF EXISTS cseallocatedNTC";
@@ -565,7 +567,7 @@ public class PostgresqlService {
         entityManager.createNativeQuery(e10).executeUpdate();
         String e11 = "DELETE FROM cseallocatedNTC WHERE category <> 'NTC'";
         entityManager.createNativeQuery(e11).executeUpdate();
-        String e12 = "DELETE FROM cseallocatedNTC WHERE srno NOT IN (SELECT srno FROM (SELECT srno FROM cseallocatedNTC ORDER BY srno LIMIT (SELECT twoforty FROM calculation WHERE category='ntc')) )";
+        String e12 = "DELETE FROM cseallocatedNTC WHERE srno NOT IN (SELECT srno FROM (SELECT srno FROM cseallocatedNTC ORDER BY srno LIMIT (SELECT "+cseseats+" FROM calculation WHERE category='ntc')) )";
         entityManager.createNativeQuery(e12).executeUpdate();
         //CSE_only OBC
         String e13 = "DROP TABLE IF EXISTS cseallocatedOBC";
@@ -574,7 +576,7 @@ public class PostgresqlService {
         entityManager.createNativeQuery(e14).executeUpdate();
         String e15 = "DELETE FROM cseallocatedOBC WHERE category <> 'OBC'";
         entityManager.createNativeQuery(e15).executeUpdate();
-        String e16 = "DELETE FROM cseallocatedOBC WHERE srno NOT IN (SELECT srno FROM (SELECT srno FROM cseallocatedOBC ORDER BY srno LIMIT (SELECT twoforty FROM calculation WHERE category='obc')) )";
+        String e16 = "DELETE FROM cseallocatedOBC WHERE srno NOT IN (SELECT srno FROM (SELECT srno FROM cseallocatedOBC ORDER BY srno LIMIT (SELECT "+cseseats+" FROM calculation WHERE category='obc')) )";
         entityManager.createNativeQuery(e16).executeUpdate();
         //CSE_only SEBC
         String e17 = "DROP TABLE IF EXISTS cseallocatedSEBC";
@@ -583,7 +585,7 @@ public class PostgresqlService {
         entityManager.createNativeQuery(e18).executeUpdate();
         String e19 = "DELETE FROM cseallocatedSEBC WHERE category <> 'SEBC'";
         entityManager.createNativeQuery(e19).executeUpdate();
-        String e20 = "DELETE FROM cseallocatedSEBC WHERE srno NOT IN (SELECT srno FROM (SELECT srno FROM cseallocatedSEBC ORDER BY srno LIMIT (SELECT twoforty FROM calculation WHERE category='sebc')) )";
+        String e20 = "DELETE FROM cseallocatedSEBC WHERE srno NOT IN (SELECT srno FROM (SELECT srno FROM cseallocatedSEBC ORDER BY srno LIMIT (SELECT "+cseseats+" FROM calculation WHERE category='sebc')) )";
         entityManager.createNativeQuery(e20).executeUpdate();
 
     }
@@ -597,7 +599,8 @@ public class PostgresqlService {
         entityManager.createNativeQuery(e2).executeUpdate();
         String e3 = "DELETE FROM mechallocatedSC WHERE category <> 'SC'";
         entityManager.createNativeQuery(e3).executeUpdate();
-        String e4 = "DELETE FROM mechallocatedSC WHERE srno NOT IN (SELECT srno FROM (SELECT srno FROM mechallocatedSC ORDER BY srno LIMIT (SELECT thirty FROM calculation WHERE category='sc')) )";
+//        String mechseats = "thirty";
+        String e4 = "DELETE FROM mechallocatedSC WHERE srno NOT IN (SELECT srno FROM (SELECT srno FROM mechallocatedSC ORDER BY srno LIMIT (SELECT " + mechseats + " FROM calculation WHERE category='sc')) )";
         entityManager.createNativeQuery(e4).executeUpdate();
         //CSE_only ST
         String e5 = "DROP TABLE IF EXISTS mechallocatedST";
