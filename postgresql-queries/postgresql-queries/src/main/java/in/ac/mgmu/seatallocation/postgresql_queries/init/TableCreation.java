@@ -15,7 +15,7 @@ public class TableCreation implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-//        duplicateTableService.method1("merit_list", "clonetable1635");
+//        duplicateTableService.method1("merit_list", "clone223maytable1635");
 //        System.out.println("Table duplicated successfully!");
         duplicateTableService.created212candidiates();
         duplicateTableService.create_calculation_table();
