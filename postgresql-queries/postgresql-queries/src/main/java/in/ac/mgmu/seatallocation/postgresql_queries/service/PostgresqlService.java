@@ -92,13 +92,13 @@ public class PostgresqlService {
         String w1 = "DROP TABLE IF EXISTS cseallocatedopen";
         entityManager.createNativeQuery(w1).executeUpdate();
         String w2 = "CREATE TABLE cseallocatedopen AS SELECT * FROM csep1meritlist LIMIT (SELECT "
-                +cseseats+" FROM calculation WHERE category='open')";
+                +cseseats+" FROM calculation WHERE category='general')";
         entityManager.createNativeQuery(w2).executeUpdate();
         String w3a = "DROP TABLE IF EXISTS cseunallocatedcommon";
         entityManager.createNativeQuery(w3a).executeUpdate();
         String w3 = "CREATE TABLE cseunallocatedcommon AS SELECT * FROM csep1meritlist";
         entityManager.createNativeQuery(w3).executeUpdate();
-        String w4 = "DELETE FROM cseunallocatedcommon WHERE srno IN (SELECT srno FROM cseallocatedopen)";
+        String w4 = "DELETE FROM cseunallocatedcommon WHERE applicationid IN (SELECT applicationid FROM cseallocatedopen)";
         entityManager.createNativeQuery(w4).executeUpdate();
     }
 
