@@ -127,19 +127,25 @@ public class PostgresqlService {
         entityManager.createNativeQuery(e2).executeUpdate();
         String e3 = "DELETE FROM cseallocatedSC WHERE category <> 'SC'";
         entityManager.createNativeQuery(e3).executeUpdate();
-        String e4 = "DELETE FROM cseallocatedSC WHERE applicationid NOT IN ("+"SELECT applicationid FROM ("+"SELECT applicationid FROM cseallocatedSC ORDER BY applicationid LIMIT (SELECT "
-                +cseseats+" FROM calculation WHERE category='sc')"+") AS limited_ids )";
+        String e4 = "DELETE FROM cseallocatedSC WHERE applicationid NOT IN ("
+                + "SELECT applicationid FROM ("
+                +"SELECT applicationid FROM cseallocatedSC ORDER BY applicationid LIMIT (SELECT "
+                +cseseats+" FROM calculation WHERE category='sc')"
+                +") AS limited_ids )";
         entityManager.createNativeQuery(e4).executeUpdate();
-//        //CSE_only ST
-//        String e5 = "DROP TABLE IF EXISTS cseallocatedST";
-//        entityManager.createNativeQuery(e5).executeUpdate();
-//        String e6 = "CREATE TABLE cseallocatedST AS SELECT * FROM cseunallocatedcommon";
-//        entityManager.createNativeQuery(e6).executeUpdate();
-//        String e7 = "DELETE FROM cseallocatedST WHERE category <> 'ST'";
-//        entityManager.createNativeQuery(e7).executeUpdate();
-//        String e8 = "DELETE FROM cseallocatedST WHERE applicationid NOT IN (SELECT applicationid FROM (SELECT applicationid FROM cseallocatedST ORDER BY applicationid LIMIT (SELECT "
-//                +cseseats+" FROM calculation WHERE category='st')) )";
-//        entityManager.createNativeQuery(e8).executeUpdate();
+        //CSE_only ST
+        String e5 = "DROP TABLE IF EXISTS cseallocatedST";
+        entityManager.createNativeQuery(e5).executeUpdate();
+        String e6 = "CREATE TABLE cseallocatedST AS SELECT * FROM cseunallocatedcommon";
+        entityManager.createNativeQuery(e6).executeUpdate();
+        String e7 = "DELETE FROM cseallocatedST WHERE category <> 'ST'";
+        entityManager.createNativeQuery(e7).executeUpdate();
+        String e8 = "DELETE FROM cseallocatedST WHERE applicationid NOT IN ("
+                + "SELECT applicationid FROM ("
+                +"SELECT applicationid FROM cseallocatedST ORDER BY applicationid LIMIT (SELECT "
+                +cseseats+" FROM calculation WHERE category='st')"
+                +") AS limited_ids )";
+        entityManager.createNativeQuery(e8).executeUpdate();
 ////        //CSE_only NT-A
 ////        String e9 = "DROP TABLE IF EXISTS cseallocatedNTC";
 ////        entityManager.createNativeQuery(e9).executeUpdate();
@@ -174,7 +180,7 @@ public class PostgresqlService {
     }
 
     @Transactional
-    public void allocated_mech_r1i1_scstntabcdobc(){
+    public void allocated_mech_r1i1_scstobc(){
         //mech_only SC
         String e1 = "DROP TABLE IF EXISTS mechallocatedSC";
         entityManager.createNativeQuery(e1).executeUpdate();
@@ -182,49 +188,52 @@ public class PostgresqlService {
         entityManager.createNativeQuery(e2).executeUpdate();
         String e3 = "DELETE FROM mechallocatedSC WHERE category <> 'SC'";
         entityManager.createNativeQuery(e3).executeUpdate();
-        String e4 = "DELETE FROM mechallocatedSC WHERE srno NOT IN (SELECT srno FROM (SELECT srno FROM mechallocatedSC ORDER BY srno LIMIT (SELECT "
-                +mechseats+" FROM calculation WHERE category='sc')) )";
+        String e4 = "DELETE FROM mechallocatedSC WHERE applicationid NOT IN ("
+                +"SELECT applicationid FROM ("
+                +"SELECT applicationid FROM mechallocatedSC ORDER BY applicationid LIMIT (SELECT "
+                +mechseats+" FROM calculation WHERE category='sc')"
+                +") AS limited_ids )";
         entityManager.createNativeQuery(e4).executeUpdate();
-        //_only ST
-        String e5 = "DROP TABLE IF EXISTS mechallocatedST";
-        entityManager.createNativeQuery(e5).executeUpdate();
-        String e6 = "CREATE TABLE mechallocatedST AS SELECT * FROM mechunallocatedcommon";
-        entityManager.createNativeQuery(e6).executeUpdate();
-        String e7 = "DELETE FROM mechallocatedST WHERE category <> 'ST'";
-        entityManager.createNativeQuery(e7).executeUpdate();
-        String e8 = "DELETE FROM mechallocatedST WHERE srno NOT IN (SELECT srno FROM (SELECT srno FROM mechallocatedST ORDER BY srno LIMIT (SELECT "
-                +mechseats+" FROM calculation WHERE category='st')) )";
-        entityManager.createNativeQuery(e8).executeUpdate();
-        //_only NT-A
-        String e9 = "DROP TABLE IF EXISTS mechallocatedNTC";
-        entityManager.createNativeQuery(e9).executeUpdate();
-        String e10 = "CREATE TABLE mechallocatedNTC AS SELECT * FROM mechunallocatedcommon";
-        entityManager.createNativeQuery(e10).executeUpdate();
-        String e11 = "DELETE FROM mechallocatedNTC WHERE category <> 'NTC'";
-        entityManager.createNativeQuery(e11).executeUpdate();
-        String e12 = "DELETE FROM mechallocatedNTC WHERE srno NOT IN (SELECT srno FROM (SELECT srno FROM mechallocatedNTC ORDER BY srno LIMIT (SELECT "
-                +mechseats+" FROM calculation WHERE category='ntc')) )";
-        entityManager.createNativeQuery(e12).executeUpdate();
-        //_only OBC
-        String e13 = "DROP TABLE IF EXISTS mechallocatedOBC";
-        entityManager.createNativeQuery(e13).executeUpdate();
-        String e14 = "CREATE TABLE mechallocatedOBC AS SELECT * FROM mechunallocatedcommon";
-        entityManager.createNativeQuery(e14).executeUpdate();
-        String e15 = "DELETE FROM mechallocatedOBC WHERE category <> 'OBC'";
-        entityManager.createNativeQuery(e15).executeUpdate();
-        String e16 = "DELETE FROM mechallocatedOBC WHERE srno NOT IN (SELECT srno FROM (SELECT srno FROM mechallocatedOBC ORDER BY srno LIMIT (SELECT "
-                +mechseats+" FROM calculation WHERE category='obc')) )";
-        entityManager.createNativeQuery(e16).executeUpdate();
-        //_only SEBC
-        String e17 = "DROP TABLE IF EXISTS mechallocatedSEBC";
-        entityManager.createNativeQuery(e17).executeUpdate();
-        String e18 = "CREATE TABLE mechallocatedSEBC AS SELECT * FROM mechunallocatedcommon";
-        entityManager.createNativeQuery(e18).executeUpdate();
-        String e19 = "DELETE FROM mechallocatedSEBC WHERE category <> 'SEBC'";
-        entityManager.createNativeQuery(e19).executeUpdate();
-        String e20 = "DELETE FROM mechallocatedSEBC WHERE srno NOT IN (SELECT srno FROM (SELECT srno FROM mechallocatedSEBC ORDER BY srno LIMIT (SELECT "
-                +mechseats+" FROM calculation WHERE category='sebc')) )";
-        entityManager.createNativeQuery(e20).executeUpdate();
+//        //_only ST
+//        String e5 = "DROP TABLE IF EXISTS mechallocatedST";
+//        entityManager.createNativeQuery(e5).executeUpdate();
+//        String e6 = "CREATE TABLE mechallocatedST AS SELECT * FROM mechunallocatedcommon";
+//        entityManager.createNativeQuery(e6).executeUpdate();
+//        String e7 = "DELETE FROM mechallocatedST WHERE category <> 'ST'";
+//        entityManager.createNativeQuery(e7).executeUpdate();
+//        String e8 = "DELETE FROM mechallocatedST WHERE applicationid NOT IN (SELECT applicationid FROM (SELECT applicationid FROM mechallocatedST ORDER BY applicationid LIMIT (SELECT "
+//                +mechseats+" FROM calculation WHERE category='st')) )";
+//        entityManager.createNativeQuery(e8).executeUpdate();
+////        //_only NT-A
+////        String e9 = "DROP TABLE IF EXISTS mechallocatedNTC";
+////        entityManager.createNativeQuery(e9).executeUpdate();
+////        String e10 = "CREATE TABLE mechallocatedNTC AS SELECT * FROM mechunallocatedcommon";
+////        entityManager.createNativeQuery(e10).executeUpdate();
+////        String e11 = "DELETE FROM mechallocatedNTC WHERE category <> 'NTC'";
+////        entityManager.createNativeQuery(e11).executeUpdate();
+////        String e12 = "DELETE FROM mechallocatedNTC WHERE applicationid NOT IN (SELECT applicationid FROM (SELECT applicationid FROM mechallocatedNTC ORDER BY applicationid LIMIT (SELECT "
+////                +mechseats+" FROM calculation WHERE category='ntc')) )";
+////        entityManager.createNativeQuery(e12).executeUpdate();
+//        //_only OBC
+//        String e13 = "DROP TABLE IF EXISTS mechallocatedOBC";
+//        entityManager.createNativeQuery(e13).executeUpdate();
+//        String e14 = "CREATE TABLE mechallocatedOBC AS SELECT * FROM mechunallocatedcommon";
+//        entityManager.createNativeQuery(e14).executeUpdate();
+//        String e15 = "DELETE FROM mechallocatedOBC WHERE category <> 'OBC'";
+//        entityManager.createNativeQuery(e15).executeUpdate();
+//        String e16 = "DELETE FROM mechallocatedOBC WHERE applicationid NOT IN (SELECT applicationid FROM (SELECT applicationid FROM mechallocatedOBC ORDER BY applicationid LIMIT (SELECT "
+//                +mechseats+" FROM calculation WHERE category='obc')) )";
+//        entityManager.createNativeQuery(e16).executeUpdate();
+//        //_only SEBC
+//        String e17 = "DROP TABLE IF EXISTS mechallocatedSEBC";
+//        entityManager.createNativeQuery(e17).executeUpdate();
+//        String e18 = "CREATE TABLE mechallocatedSEBC AS SELECT * FROM mechunallocatedcommon";
+//        entityManager.createNativeQuery(e18).executeUpdate();
+//        String e19 = "DELETE FROM mechallocatedSEBC WHERE category <> 'SEBC'";
+//        entityManager.createNativeQuery(e19).executeUpdate();
+//        String e20 = "DELETE FROM mechallocatedSEBC WHERE applicationid NOT IN (SELECT applicationid FROM (SELECT applicationid FROM mechallocatedSEBC ORDER BY applicationid LIMIT (SELECT "
+//                +mechseats+" FROM calculation WHERE category='sebc')) )";
+//        entityManager.createNativeQuery(e20).executeUpdate();
 
     }
 
