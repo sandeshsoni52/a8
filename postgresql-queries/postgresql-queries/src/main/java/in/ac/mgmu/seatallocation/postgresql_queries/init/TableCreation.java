@@ -22,11 +22,12 @@ public class TableCreation implements CommandLineRunner {
         duplicateTableService.duplicate_meritlist();
         duplicateTableService.separatebyp1();
         duplicateTableService.allocated_cse_r1i1_open();
-//        duplicateTableService.allocated_cse_r1i1_scstntabcdobc();
+        duplicateTableService.allocated_cse_r1i1_scstobc();
 //        duplicateTableService.r1i2prepare();
-        System.out.println("1449");
-//        duplicateTableService.allocated_mech_r1i1_open();
+
+        duplicateTableService.allocated_mech_r1i1_general();
 //        duplicateTableService.allocated_mech_r1i1_scstntabcdobc();
+        System.out.println("1508");
 
     }
 }
