@@ -180,7 +180,7 @@ public class PostgresqlService {
     }
 
     @Transactional
-    public void allocated_mech_r1i1_scstobc(){
+    public void allocated_mech_r1i1_scstobcsebc(){
         //mech_only SC
         String e1 = "DROP TABLE IF EXISTS mechallocatedSC";
         entityManager.createNativeQuery(e1).executeUpdate();
