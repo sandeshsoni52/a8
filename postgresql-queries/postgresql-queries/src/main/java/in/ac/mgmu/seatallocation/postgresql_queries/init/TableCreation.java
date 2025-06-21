@@ -17,14 +17,14 @@ public class TableCreation implements CommandLineRunner {
     public void run(String... args) throws Exception {
 //        duplicateTableService.method1("merit_list", "clone223maytable1635");
 //        System.out.println("Table duplicated successfully!");
-        duplicateTableService.created212candidiates();
+
         duplicateTableService.create_calculation_table();
         duplicateTableService.duplicate_meritlist();
-        duplicateTableService.separatebyp1();
-        duplicateTableService.allocated_cse_r1i1_open();
+//        duplicateTableService.separatebyp1();
+//        duplicateTableService.allocated_cse_r1i1_open();
 //        duplicateTableService.allocated_cse_r1i1_scstntabcdobc();
 //        duplicateTableService.r1i2prepare();
-        System.out.println("1649");
+        System.out.println("1412");
 //        duplicateTableService.allocated_mech_r1i1_open();
 //        duplicateTableService.allocated_mech_r1i1_scstntabcdobc();
 
